@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Text Utility App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #e9e9e9;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Text Utility App</h1>
+        <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+        <div class="buttons">
+            <button onclick="copyText()">Copy</button>
+            <button onclick="convertToUpper()">Uppercase</button>
+            <button onclick="convertToLower()">Lowercase</button>
+            <button onclick="retrieveEmails()">Retrieve Emails</button>
+            <button onclick="countWords()">Word Count</button>
+            <button onclick="reverseText()">Reverse Text</button>
+            <button onclick="removeSpaces()">Remove Spaces</button>
+            <button onclick="capitalizeText()">Capitalize Text</button>
+            <button onclick="replaceVowels()">Replace Vowels</button>
+            <button onclick="clearText()">Clear Text</button>
+        </div>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const output = document.getElementById('output');
+
+        function copyText() {
+            textInput.select();
+            document.execCommand('copy');
+            output.textContent = 'Text copied to clipboard!';
+        }
+
+        function convertToUpper() {
+            textInput.value = textInput.value.toUpperCase();
+            output.textContent = textInput.value;
+        }
+
+        function convertToLower() {
+            textInput.value = textInput.value.toLowerCase();
+            output.textContent = textInput.value;
+        }
+
+        function retrieveEmails() {
+            const emails = textInput.value.match(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/gi);
+            output.textContent = emails ? emails.join(', ') : 'No emails found.';
+        }
+
+        function countWords() {
+            const wordCount = textInput.value.trim().split(/\s+/).length;
+            output.textContent = `Word count: ${wordCount}`;
+        }
+
+        function reverseText() {
+            textInput.value = textInput.value.split('').reverse().join('');
+            output.textContent = textInput.value;
+        }
+
+        function removeSpaces() {
+            textInput.value = textInput.value.replace(/\s+/g, '');
+            output.textContent = textInput.value;
+        }
+
+        function capitalizeText() {
+            textInput.value = textInput.value.replace(/\b\w/g, char => char.toUpperCase());
+            output.textContent = textInput.value;
+        }
+
+        function replaceVowels() {
+            textInput.value = textInput.value.replace(/[aeiou]/gi, '*');
+            output.textContent = textInput.value;
+        }
+
+        function clearText() {
+            textInput.value = '';
+            output.textContent = 'Text cleared.';
+        }
+    </script>
+</body>
+</html>
