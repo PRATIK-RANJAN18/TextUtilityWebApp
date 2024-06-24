@@ -1,1 +1,1 @@
-- This app provides advanced text utilities like copy, uppercase, lowercase, email retrieval, and more. [View App]()
+- This app provides advanced text utilities like copy, uppercase, lowercase, email retrieval, and more. [View App](https://textutilitywebapp.netlify.app/)
